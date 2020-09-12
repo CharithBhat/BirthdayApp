@@ -4,8 +4,6 @@ import 'package:todo_app/home.dart/ReminderList_widget.dart';
 import 'package:todo_app/home.dart/Todo_Model.dart';
 import 'package:todo_app/home.dart/date_widget.dart';
 
-
-
 class HomeScreen extends StatefulWidget {
   @override
   _HomeScreenState createState() => _HomeScreenState();

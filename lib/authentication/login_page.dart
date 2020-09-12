@@ -1,4 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:todo_app/home.dart/Todo_Model.dart';
+import 'package:todo_app/home.dart/home_screen.dart';
+import 'package:todo_app/nav_bar.dart';
+
+import 'sign_in.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -25,10 +31,26 @@ class _LoginPageState extends State<LoginPage> {
       ),
     );
   }
+
   Widget _signInButton() {
     return OutlineButton(
       splashColor: Colors.grey,
-      onPressed: () {},
+      onPressed: () {
+        signInWithGoogle().then((result) {
+          if (result != null) {
+            Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (context) {
+                  return ChangeNotifierProvider(
+                    create: (context) => TodoModel(),
+                    child: NavBar(),
+                  );
+                },
+              ),
+            );
+          }
+        });
+      },
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(40)),
       highlightElevation: 0,
       borderSide: BorderSide(color: Colors.grey),

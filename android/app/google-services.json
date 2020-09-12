@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "836315927026",
+    "firebase_url": "https://birthday-app-572f7.firebaseio.com",
+    "project_id": "birthday-app-572f7",
+    "storage_bucket": "birthday-app-572f7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:836315927026:android:d02c698aa31652b188db6b",
+        "android_client_info": {
+          "package_name": "com.example.todo_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "836315927026-onp2b2ptfrsb1r46rf6npfbm22fv4flq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.todo_app",
+            "certificate_hash": "e32075c7ed64e8bbca991f126f8b033d0e588c9b"
+          }
+        },
+        {
+          "client_id": "836315927026-8vqvnobdb02r9lujnj9hvub9du9tckjo.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD906uibMN9hj0Dcx34J0Zflync08ZGtC0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "836315927026-8vqvnobdb02r9lujnj9hvub9du9tckjo.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

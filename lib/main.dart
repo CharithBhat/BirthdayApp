@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:todo_app/home.dart/Todo_Model.dart';
-import 'package:todo_app/nav_bar.dart';
+import 'package:todo_app/authentication/login_page.dart';
 
 void main() {
   runApp(MyApp());
@@ -14,10 +12,11 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Todo App',
       theme: ThemeData(),
-      home: ChangeNotifierProvider(
-        create: (context) => TodoModel(),
-        child: NavBar(),
-      ),
+      home: LoginPage(),
+      // home: ChangeNotifierProvider(
+      //   create: (context) => TodoModel(),
+      //   child: LoginPage(),
+      // ),
     );
   }
 }
