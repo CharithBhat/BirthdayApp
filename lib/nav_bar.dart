@@ -24,7 +24,7 @@ class _NavBarState extends State<NavBar> {
         type: BottomNavigationBarType.fixed,
         backgroundColor: Colors.white,
         selectedItemColor: Colors.blue[900],
-        unselectedItemColor: Colors.grey[600],
+        unselectedItemColor: Colors.black,
         onTap: (index){
           setState(() {
             _currentIndex = index;

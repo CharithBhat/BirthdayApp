@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:todo_app/drawer_widget.dart';
 import 'package:todo_app/home.dart/ReminderList_widget.dart';
 import 'package:todo_app/home.dart/Todo_Model.dart';
 import 'package:todo_app/home.dart/date_widget.dart';
@@ -16,10 +17,6 @@ class _HomeScreenState extends State<HomeScreen> {
       backgroundColor: Colors.blue[900],
       appBar: AppBar(
         title: Text('Upcoming Birthdays'),
-        leading: Icon(
-          Icons.menu,
-          color: Colors.white,
-        ),
         actions: [
           IconButton(
             icon: Icon(Icons.add),
@@ -30,6 +27,9 @@ class _HomeScreenState extends State<HomeScreen> {
         ],
         backgroundColor: Colors.transparent,
         elevation: 0,
+      ),
+      drawer: Drawer(
+        child: DrawerWidget(),
       ),
 
       // Separation for Readability
