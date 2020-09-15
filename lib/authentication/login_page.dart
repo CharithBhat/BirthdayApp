@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:todo_app/home.dart/Todo_Model.dart';
+import 'package:todo_app/models/birthday_list_model.dart';
 import 'package:todo_app/nav_bar.dart';
 
 import 'sign_in.dart';
@@ -41,7 +41,7 @@ class _LoginPageState extends State<LoginPage> {
               MaterialPageRoute(
                 builder: (context) {
                   return ChangeNotifierProvider(
-                    create: (context) => TodoModel(),
+                    create: (context) => BirthdayList(),
                     child: NavBar(),
                   );
                 },

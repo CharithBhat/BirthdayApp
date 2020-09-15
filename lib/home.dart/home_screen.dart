@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:todo_app/drawer_widget.dart';
 import 'package:todo_app/home.dart/ReminderList_widget.dart';
-import 'package:todo_app/home.dart/Todo_Model.dart';
 import 'package:todo_app/home.dart/date_widget.dart';
+import 'package:todo_app/models/birthday_list_model.dart';
+
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -21,7 +22,7 @@ class _HomeScreenState extends State<HomeScreen> {
           IconButton(
             icon: Icon(Icons.add),
             onPressed: () {
-              Provider.of<TodoModel>(context, listen: false).addTaskInList();
+              Provider.of<BirthdayList>(context, listen: false).addBirthdayInList();
             },
           ),
         ],
@@ -38,20 +39,10 @@ class _HomeScreenState extends State<HomeScreen> {
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Date(), // date.dart
+          Date(), // date_widget.dart
           ReminderList(), // Reminder_List.dart
         ],
       ),
-
-      // Separation for Readabilty
-
-      // floatingActionButton: FloatingActionButton(
-      //   backgroundColor: Colors.blue[900],
-      //   child: Icon(Icons.add),
-      //   onPressed: () {
-      //     Provider.of<TodoModel>(context, listen: false).addTaskInList();
-      //   },
-      // ),
     );
   }
 }
