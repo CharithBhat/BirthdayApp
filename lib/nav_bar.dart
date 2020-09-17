@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:todo_app/home.dart/home_screen.dart';
+import 'package:todo_app/screens/add/add_screen.dart';
+import 'screens/home/home_screen.dart';
 
 class NavBar extends StatefulWidget {
   @override
@@ -10,7 +11,7 @@ class _NavBarState extends State<NavBar> {
   int _currentIndex = 0;
   final List<Widget> _children = [
     HomeScreen(),
-    HomeScreen(),
+    AddScreen(),
     HomeScreen(),
     HomeScreen(),
     HomeScreen(),
@@ -25,7 +26,7 @@ class _NavBarState extends State<NavBar> {
         backgroundColor: Colors.white,
         selectedItemColor: Colors.blue[900],
         unselectedItemColor: Colors.black,
-        onTap: (index){
+        onTap: (index) {
           setState(() {
             _currentIndex = index;
           });
@@ -34,11 +35,11 @@ class _NavBarState extends State<NavBar> {
         items: [
           BottomNavigationBarItem(
             icon: Icon(Icons.add_alert),
-            title: Text('Upcoming'),
+            title: Text('Birthdays'),
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.add_alert),
-            title: Text('Upcoming'),
+            icon: Icon(Icons.add,size: 30,),
+            title: Text('Add'),
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.add_alert),

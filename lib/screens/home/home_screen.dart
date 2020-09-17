@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:todo_app/drawer_widget.dart';
-import 'package:todo_app/home.dart/ReminderList_widget.dart';
-import 'package:todo_app/home.dart/date_widget.dart';
+import 'ReminderList_widget.dart';
+import 'date_widget.dart';
 import 'package:todo_app/models/birthday_list_model.dart';
 
 

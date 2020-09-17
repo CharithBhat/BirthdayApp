@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:todo_app/models/birthday_list_model.dart';
 import 'package:todo_app/nav_bar.dart';
+import 'package:todo_app/providers/item_list.dart';
 
 import 'sign_in.dart';
 
@@ -40,8 +41,15 @@ class _LoginPageState extends State<LoginPage> {
             Navigator.of(context).push(
               MaterialPageRoute(
                 builder: (context) {
-                  return ChangeNotifierProvider(
-                    create: (context) => BirthdayList(),
+                  return MultiProvider(
+                    providers: [
+                      ChangeNotifierProvider<BirthdayList>(
+                        create: (context) => BirthdayList(),
+                      ),
+                      ChangeNotifierProvider<ItemList>(
+                        create: (context) => ItemList(),
+                      ),
+                    ],
                     child: NavBar(),
                   );
                 },
