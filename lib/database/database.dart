@@ -8,7 +8,7 @@ class DatabaseService {
       FirebaseFirestore.instance.collection('birthdays');
 
   Future updateUserData(String name, String date, String image) async {
-    return await birthdayCollection.doc(uid).set(
+    return await birthdayCollection.doc(uid).collection("userDetails").doc('details').set(
       {
         'name': name,
         'date': date,
@@ -17,8 +17,19 @@ class DatabaseService {
     );
   }
 
-  Stream<QuerySnapshot> get birthdays{
-    return birthdayCollection.snapshots();
+  Future updateUserBirthdays(String name, String date) async {
+    print('hello');
+    return await birthdayCollection.doc(uid).collection("friendBirthdays").doc('details').set(
+      {
+        'name': name,
+        'date': date,
+      },
+    );
   }
 
+  Stream<QuerySnapshot> get birthdays {
+    return birthdayCollection.snapshots();
+  }
 }
+
+

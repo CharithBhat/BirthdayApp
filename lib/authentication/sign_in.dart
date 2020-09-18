@@ -9,6 +9,7 @@ final GoogleSignIn googleSignIn = GoogleSignIn();
 String name;
 String email;
 String imageUrl;
+String userId;
 
 Future<String> signInWithGoogle() async {
   await Firebase.initializeApp();
@@ -40,6 +41,7 @@ Future<String> signInWithGoogle() async {
     name = user.displayName;
     email = user.email;
     imageUrl = user.photoURL;
+    userId = user.uid;
 
     if (name.contains(" ")) {
       name = name.substring(0, name.indexOf(" "));

@@ -9,4 +9,8 @@ class ItemList with ChangeNotifier{
     friendBirthdayList.add(theirBirthday);
     notifyListeners();
   }
+
+  List<FriendBirthday> get theList{
+    return friendBirthdayList;
+  }
 }

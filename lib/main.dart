@@ -11,7 +11,11 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Todo App',
-      theme: ThemeData(),
+      theme: ThemeData(
+        brightness: Brightness.light,
+        primaryColor: Colors.blue[900],
+        accentColor: Colors.white,
+      ),
       home: LoginPage(),
       // home: ChangeNotifierProvider(
       //   create: (context) => TodoModel(),
