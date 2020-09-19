@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:todo_app/drawer_widget.dart';
 import 'ReminderList_widget.dart';
 import 'date_widget.dart';
-import 'package:todo_app/models/birthday_list_model.dart';
 
 
 class HomeScreen extends StatefulWidget {
@@ -18,14 +16,6 @@ class _HomeScreenState extends State<HomeScreen> {
       backgroundColor: Colors.blue[900],
       appBar: AppBar(
         title: Text('Upcoming Birthdays'),
-        actions: [
-          IconButton(
-            icon: Icon(Icons.add),
-            onPressed: () {
-              Provider.of<BirthdayList>(context, listen: false).addBirthdayInList();
-            },
-          ),
-        ],
         backgroundColor: Colors.transparent,
         elevation: 0,
       ),

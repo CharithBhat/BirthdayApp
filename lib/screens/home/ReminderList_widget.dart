@@ -1,6 +1,7 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:todo_app/models/birthday_list_model.dart';
+import 'package:todo_app/authentication/sign_in.dart';
+import 'package:todo_app/database/database.dart';
 
 class ReminderList extends StatelessWidget {
   @override
@@ -15,61 +16,30 @@ class ReminderList extends StatelessWidget {
             topRight: Radius.circular(50),
           ),
         ),
-        child: Consumer<BirthdayList>(
-          builder: (context, birthday, _) {
-            return ListView.builder(
-              itemCount: birthday.birthdayList.length,
-              itemBuilder: (context, index) {
-                return Container(
-                  child: ListTile(
-                    leading: Container(
-                      width: 50,
-                      height: 50,
-                      margin: EdgeInsets.only(bottom: 0),
-                      decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        image: DecorationImage(
-                          image: NetworkImage(
-                              birthday.birthdayList[index].imageUrl),
-                          fit: BoxFit.fill,
-                        ),
-                      ),
+        child: StreamBuilder(
+          stream: FirebaseFirestore.instance
+              .collection('birthdays')
+              .doc(userId)
+              .collection('friendBirthdays')
+              .snapshots(),
+          builder: (context, snapshot) {
+            if (snapshot.hasData) {
+              print(snapshot.data.docs);
+              return ListView.builder(
+                itemCount: snapshot.data.docs.length,
+                itemBuilder: (context, index) {
+                  return Container(
+                    child: ListTile(
+                      title: Text(snapshot.data.docs[index]['name']), //// help
                     ),
-                    contentPadding:
-                        EdgeInsets.only(top: 8, bottom: 8, left: 32, right: 32),
-                    title: Text(
-                      birthday.birthdayList[index].name,
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    subtitle: Row(
-                      children: [
-                        Text(
-                          birthday.birthdayList[index].date,
-                          style: TextStyle(
-                            color: Colors.grey,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        SizedBox(
-                          width: 15,
-                        ),
-                        Text(
-                          birthday.birthdayList[index].day,
-                          style: TextStyle(
-                            color: Colors.grey,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  margin: EdgeInsets.only(bottom: 8, left: 16, right: 16),
-                );
-              },
-            );
+                  );
+                },
+              );
+            } else if (snapshot.hasError) {
+              return CircularProgressIndicator();
+            } else {
+              return CircularProgressIndicator();
+            }
           },
         ),
       ),

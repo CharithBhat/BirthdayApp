@@ -1,40 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:todo_app/models/friend_birthday.dart';
 import 'package:todo_app/providers/item_list.dart';
 import 'package:todo_app/screens/add/birthday_item.dart';
 import 'package:todo_app/database/database.dart';
 import 'package:todo_app/authentication/sign_in.dart';
 
 class AddScreen extends StatelessWidget {
-  void confirm() {
-    //DatabaseService(uid: userId).updateUserBirthdays('charith', '04/09/1999');
-
-    // List<FriendBirthday> friendList = ItemList().theList;
-    // friendList.map(
-    //   (item) => DatabaseService(uid: userId)
-    //       .updateUserBirthdays('charith', '04/09/1999'),
-    // );
-
-    // ItemList itemchan = ItemList();
-    // List<FriendBirthday> friendList = itemchan.theList;
-    // friendList.map(
-    //   (item) => DatabaseService(uid: userId)
-    //       .updateUserBirthdays('charith', '04/09/1999'),
-    //);
-
-    ItemList itemchan = ItemList();
-    List<FriendBirthday> friendList = itemchan.theList;
-    friendList.forEach(
-      (element) {
-        DatabaseService(uid: userId)
-            .updateUserBirthdays('charith', '04/09/1999');
-      },
-    );
-  }
 
   @override
   Widget build(BuildContext context) {
+    void confirm() {
+      final list =
+          Provider.of<ItemList>(context, listen: false).friendBirthdayList;
+      list.forEach(
+        (element) {
+          DatabaseService(uid: userId)
+              .updateUserBirthdays('charith', '04/09/1999');
+        },
+      );
+    }
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.blue[900],
