@@ -6,7 +6,6 @@ import 'package:todo_app/database/database.dart';
 import 'package:todo_app/authentication/sign_in.dart';
 
 class AddScreen extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
     void confirm() {
@@ -20,6 +19,20 @@ class AddScreen extends StatelessWidget {
       );
     }
 
+    void displayBottomSheet(BuildContext context) {
+      showModalBottomSheet(
+        context: context,
+        builder: (context) {
+          return Container(
+            height: MediaQuery.of(context).size.height * 0.6,
+            child: Center(
+              child: Text('Welcome'),
+            ),
+          );
+        },
+      );
+    }
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.blue[900],
@@ -28,8 +41,19 @@ class AddScreen extends StatelessWidget {
           IconButton(
             icon: Icon(Icons.add),
             onPressed: () {
-              Provider.of<ItemList>(context, listen: false)
-                  .addFriendBirthdayInList();
+              displayBottomSheet(context);
+            },
+          ),
+          IconButton(
+            icon: Icon(Icons.delete),
+            onPressed: () {
+              DatabaseService(uid: userId).deleteBirthday();
+            },
+          ),
+          IconButton(
+            icon: Icon(Icons.update),
+            onPressed: () {
+              DatabaseService(uid: userId).updateStuff();
             },
           )
         ],
@@ -68,17 +92,6 @@ class AddScreen extends StatelessWidget {
           ),
         ],
       ),
-      // floatingActionButton: FloatingActionButton(
-      //   backgroundColor: Colors.blue[900],
-      //   foregroundColor: Colors.black,
-      //   onPressed: () {
-      //     // Respond to button press
-      //   },
-      //   child: Icon(
-      //     Icons.add,
-      //     color: Colors.white,
-      //   ),
-      // ),
     );
   }
 }

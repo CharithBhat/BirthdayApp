@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:todo_app/authentication/sign_in.dart';
 
 class DatabaseService {
   final String uid;
@@ -30,7 +31,7 @@ class DatabaseService {
     return await birthdayCollection
         .doc(uid)
         .collection("friendBirthdays")
-        .doc()
+        .doc('hello') // needs to be set dynamically
         .set(
       {
         'name': name,
@@ -39,19 +40,33 @@ class DatabaseService {
     );
   }
 
-  // retrieve user data
-
-  void getData() {
-    birthdayCollection.doc().collection('friendBirthdays').get().then(
-          (QuerySnapshot snapshot) => snapshot.docs.forEach(
-            (element) {
-              print("${element.data}");
-            },
-          ),
+  Future updateStuff() async {
+    return await birthdayCollection
+        .doc(userId)
+        .collection('friendBirthdays')
+        .doc('hello')
+        .update(
+          {'name': 'notCharith'},
+        )
+        .then(
+          (value) => print('updated the name'),
+        )
+        .catchError(
+          (error) => print('error occurred'),
         );
   }
 
-  Stream<QuerySnapshot> get birthdays {
-    return birthdayCollection.snapshots();
+  Future<void> deleteBirthday() async {
+    return await birthdayCollection
+        .doc(userId)
+        .collection('friendBirthdays')
+        .doc('hello') // needs to be set dynamically
+        .delete()
+        .then((value) => print('user deleted'))
+        .catchError(
+      (onError) {
+        print("Failed to delete birthday");
+      },
+    );
   }
 }
