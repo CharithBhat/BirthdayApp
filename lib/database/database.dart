@@ -1,5 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:todo_app/authentication/sign_in.dart';
+import 'package:todo_app/authentication/authentication.dart';
 
 class DatabaseService {
   final String uid;

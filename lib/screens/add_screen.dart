@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:todo_app/providers/item_list.dart';
-import 'package:todo_app/screens/add/birthday_item.dart';
+import 'package:todo_app/widgets/birthday_item.dart';
 import 'package:todo_app/database/database.dart';
-import 'package:todo_app/authentication/sign_in.dart';
+import 'package:todo_app/authentication/authentication.dart';
 
 class AddScreen extends StatelessWidget {
   @override
@@ -84,10 +84,11 @@ class AddScreen extends StatelessWidget {
           Container(
             padding: EdgeInsets.all(30),
             child: RaisedButton(
-              disabledColor: Colors.blue[900],
+              disabledColor: Theme.of(context).primaryColor,
               disabledTextColor: Colors.white,
               onPressed: confirm,
-              child: Text('Confirm'),
+              color: Theme.of(context).primaryColor,
+              child: Text('Confirm',style: TextStyle(color: Colors.white),),
             ),
           ),
         ],

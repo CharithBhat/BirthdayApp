@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:todo_app/screens/add/add_screen.dart';
-import 'screens/home/home_screen.dart';
+import 'package:todo_app/screens/add_screen.dart';
+import 'package:todo_app/screens/place_holder_screen.dart';
+import '../screens/home_screen.dart';
 
 class NavBar extends StatefulWidget {
   @override
@@ -12,9 +13,9 @@ class _NavBarState extends State<NavBar> {
   final List<Widget> _children = [
     HomeScreen(),
     AddScreen(),
-    HomeScreen(),
-    HomeScreen(),
-    HomeScreen(),
+    PlaceHolderScreen(),
+    PlaceHolderScreen(),
+    PlaceHolderScreen(),
   ];
 
   @override
@@ -23,9 +24,11 @@ class _NavBarState extends State<NavBar> {
       body: _children[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
-        backgroundColor: Colors.white,
-        selectedItemColor: Colors.blue[900],
-        unselectedItemColor: Colors.black,
+        backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+        selectedItemColor: Theme.of(context).primaryColor,
+        unselectedItemColor: Theme.of(context).iconTheme.color,
+        unselectedFontSize: 12,
+        selectedFontSize: 12,
         onTap: (index) {
           setState(() {
             _currentIndex = index;
@@ -35,23 +38,36 @@ class _NavBarState extends State<NavBar> {
         items: [
           BottomNavigationBarItem(
             icon: Icon(Icons.add_alert),
-            title: Text('Birthdays'),
+            title: Text(
+              'Birthdays',
+            ),
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.add,size: 30,),
-            title: Text('Add'),
+            icon: Icon(
+              Icons.add,
+              size: 30,
+            ),
+            title: Text(
+              'Add',
+            ),
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.add_alert),
-            title: Text('Upcoming'),
+            title: Text(
+              'Upcoming',
+            ),
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.add_alert),
-            title: Text('Upcoming'),
+            title: Text(
+              'Upcoming',
+            ),
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.add_alert),
-            title: Text('Upcoming'),
+            title: Text(
+              'Upcoming',
+            ),
           ),
         ],
       ),

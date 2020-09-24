@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:todo_app/models/birthday_list_model.dart';
-import 'package:todo_app/nav_bar.dart';
+import 'package:todo_app/providers/birthday_list_model.dart';
+import 'package:todo_app/widgets/nav_bar.dart';
 import 'package:todo_app/providers/item_list.dart';
 
-import 'sign_in.dart';
+import '../authentication/authentication.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -16,7 +16,7 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        color: Colors.blue[900],
+        color: Theme.of(context).primaryColor,
         child: Center(
           child: Column(
             mainAxisSize: MainAxisSize.max,
@@ -34,7 +34,7 @@ class _LoginPageState extends State<LoginPage> {
 
   Widget _signInButton() {
     return OutlineButton(
-      splashColor: Colors.grey,
+      splashColor: Theme.of(context).splashColor,
       onPressed: () {
         signInWithGoogle().then((result) {
           if (result != null) {
@@ -60,7 +60,7 @@ class _LoginPageState extends State<LoginPage> {
       },
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(40)),
       highlightElevation: 0,
-      borderSide: BorderSide(color: Colors.white),
+      borderSide: BorderSide(color: Theme.of(context).accentColor),
       child: Padding(
         padding: const EdgeInsets.fromLTRB(0, 10, 0, 10),
         child: Row(
@@ -72,10 +72,7 @@ class _LoginPageState extends State<LoginPage> {
               padding: const EdgeInsets.only(left: 10),
               child: Text(
                 'Sign in with Google',
-                style: TextStyle(
-                  fontSize: 20,
-                  color: Colors.white,
-                ),
+                style: Theme.of(context).textTheme.headline2,
               ),
             )
           ],

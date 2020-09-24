@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:todo_app/drawer_widget.dart';
-import 'ReminderList_widget.dart';
-import 'date_widget.dart';
-
+import 'package:todo_app/widgets/drawer_widget.dart';
+import '../widgets/ReminderList_widget.dart';
+import '../widgets/date_widget.dart';
 
 class HomeScreen extends StatefulWidget {
   @override
@@ -13,9 +12,13 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.blue[900],
+      backgroundColor: Theme.of(context).primaryColor,
       appBar: AppBar(
-        title: Text('Upcoming Birthdays'),
+        title: Text(
+          'Upcoming Birthdays',
+          style: Theme.of(context).appBarTheme.textTheme.headline1,
+        ),
+        iconTheme: IconThemeData(color: Colors.white),
         backgroundColor: Colors.transparent,
         elevation: 0,
       ),

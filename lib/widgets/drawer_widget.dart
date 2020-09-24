@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:todo_app/providers/app_state_notifier.dart';
 
-import './authentication/login_page.dart';
-import 'authentication/sign_in.dart';
+import '../screens/login_screen.dart';
+import '../authentication/authentication.dart';
 
 class DrawerWidget extends StatelessWidget {
   @override
@@ -9,20 +11,32 @@ class DrawerWidget extends StatelessWidget {
     return ListView(
       padding: EdgeInsets.zero,
       children: <Widget>[
-        createDrawerHeader(),
-        createDrawerBodyItem(icon: Icons.exit_to_app, text: 'Logout',onTap: (){
-          signOutGoogle();
-                  Navigator.of(context).pushAndRemoveUntil(
-                    MaterialPageRoute(
-                      builder: (context) {
-                        return LoginPage();
-                      },
-                    ),
-                    ModalRoute.withName('/'),
-                  );
-        }),
-        createDrawerBodyItem(icon: Icons.account_circle, text: 'Profile'),
-        createDrawerBodyItem(icon: Icons.event_note, text: 'Events'),
+        createDrawerHeader(context),
+        createDrawerBodyItem(
+            icon: Icons.exit_to_app,
+            text: 'Logout',
+            onTap: () {
+              signOutGoogle();
+              Navigator.of(context).pushAndRemoveUntil(
+                MaterialPageRoute(
+                  builder: (context) {
+                    return LoginPage();
+                  },
+                ),
+                ModalRoute.withName('/'),
+              );
+            }),
+        //createDrawerBodyItem(icon: Icons.account_circle, text: 'Profile'),
+        SwitchListTile(
+          title: Text('Dark Mode'),
+          value:
+              Provider.of<AppStateNotifier>(context, listen: true).isDarkModeOn,
+          onChanged: (boolVal) {
+            Provider.of<AppStateNotifier>(context, listen: false)
+                .updateTheme(boolVal);
+          },
+        ),
+        createDrawerBodyItem(icon: Icons.settings, text: 'Settings'),
         Divider(),
         createDrawerBodyItem(
             icon: Icons.notifications_active, text: 'Notifications'),
@@ -36,17 +50,14 @@ class DrawerWidget extends StatelessWidget {
   }
 }
 
-Widget createDrawerHeader() {
+Widget createDrawerHeader(BuildContext context) {
   return DrawerHeader(
     margin: EdgeInsets.zero,
     padding: EdgeInsets.zero,
-    // decoration: BoxDecoration(
-    //     image: DecorationImage(
-    //         fit: BoxFit.fill, image: AssetImage('images/bg_header.jpeg'))),
     child: Stack(
       children: <Widget>[
         Container(
-          color: Colors.blue[900],
+          color: Theme.of(context).primaryColor,
           child: Center(
             child: Container(
               width: 100,
@@ -67,10 +78,7 @@ Widget createDrawerHeader() {
           left: 16.0,
           child: Text(
             "Welcome $name",
-            style: TextStyle(
-                color: Colors.white,
-                fontSize: 20.0,
-                fontWeight: FontWeight.w500),
+            style: Theme.of(context).textTheme.headline2,
           ),
         ),
       ],
