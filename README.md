@@ -1,4 +1,4 @@
-# todo_app
+# Birthday App
 
 A new Flutter project.
 
