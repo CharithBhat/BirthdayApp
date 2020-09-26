@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:todo_app/providers/app_state_notifier.dart';
 
-import '../screens/login_screen.dart';
+import '../screens/login_page.dart';
 import '../authentication/authentication.dart';
 
 class DrawerWidget extends StatelessWidget {

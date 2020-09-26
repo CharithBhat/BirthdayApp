@@ -2,8 +2,20 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:todo_app/database/database.dart';
+import 'package:todo_app/models/user_man.dart' as model;
 
 final FirebaseAuth _auth = FirebaseAuth.instance;
+
+// creates a user object based on firebaseUser
+
+model.User _userFromFirebase(User user) {
+  return user != null ? model.User(uid: user.uid) : null;
+}
+
+Stream<model.User> get user {
+  return _auth.authStateChanges().map((User user) => _userFromFirebase(user));
+}
+
 final GoogleSignIn googleSignIn = GoogleSignIn();
 
 String name;
