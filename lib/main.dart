@@ -16,7 +16,7 @@ void main() async {
     MultiProvider(
       providers: [
         ChangeNotifierProvider<AppStateNotifier>(
-          create: (context) => AppStateNotifier(),
+          create: (context) => AppStateNotifier(), 
         ),
         StreamProvider<User>.value(value: user),
         ChangeNotifierProvider<BirthdayList>(
@@ -30,6 +30,9 @@ void main() async {
     ),
   );
 }
+
+//this is my app
+// again this is a test
 
 class MyApp extends StatelessWidget {
   @override

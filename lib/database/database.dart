@@ -8,7 +8,7 @@ class DatabaseService {
   final CollectionReference birthdayCollection =
       FirebaseFirestore.instance.collection('birthdays');
 
-  // create/ update user data
+  // create/update user data
 
   Future updateUserData(String name, String date, String image) async {
     return await birthdayCollection
@@ -24,7 +24,7 @@ class DatabaseService {
     );
   }
 
-  // creat/ update birthday data
+  // create/update birthday data
 
   Future updateUserBirthdays(String name, String date) async {
     print('hello');

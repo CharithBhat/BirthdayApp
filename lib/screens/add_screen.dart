@@ -10,7 +10,7 @@ class AddScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     void confirm() {
       final list =
-          Provider.of<ItemList>(context, listen: false).friendBirthdayList;
+          Provider.of<ItemList>(context, listen: false).friendBirthdayList;  // Listen should be false?
       list.forEach(
         (element) {
           DatabaseService(uid: userId)
